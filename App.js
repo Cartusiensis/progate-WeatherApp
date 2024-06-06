@@ -47,7 +47,6 @@ const App = () => {
   return (
     <View style={styles.container}>
       <WeatherSearch searchWeather={searchWeather} />
-      { weatherData &&  <WeatherInfo weatherData={weatherData} /> }
       <View style={styles.marginTop20}>{renderComponent()}</View>
     </View>
   )
