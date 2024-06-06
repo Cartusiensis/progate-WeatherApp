@@ -33,3 +33,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# OpenWeatherMap API KEY
+src/constant.js
