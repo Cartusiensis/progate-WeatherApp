@@ -1,7 +1,22 @@
 import React from "react"
 import { View, StyleSheet, Image, Text } from "react-native"
+import CountryFlag from "react-native-country-flag"
 
 const WeatherInfo = ({ weatherData }) => {
+  const convertTimezone = (seconds) => {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+  
+    let sign = '+'
+    if (hours < 0) {
+      sign = '-'
+    }
+  
+    const formattedUTC = `UTC${sign}${Math.abs(hours).toString().padStart(2, '0')}:${Math.abs(minutes).toString().padStart(2, '0')}`
+  
+    return formattedUTC
+  };
+  
     return (
         <View style={styles.marginTop20}>
             <Text style={styles.text}>The weather of {weatherData.name}</Text>
@@ -23,6 +38,17 @@ const WeatherInfo = ({ weatherData }) => {
             <View style={[styles.rowContainer, styles.marginTop20]}>
                 <Text style={[styles.text, styles.bold]}>Wind Speed: </Text>
                 <Text style={[styles.text, styles.marginLeft15]}>{weatherData.wind.speed} m/s</Text>
+            </View>
+            <View style={[styles.rowContainer, styles.marginTop20]}>
+                <Text style={[styles.text, styles.bold]}>Country: </Text>
+                <Text style={[styles.text, styles.marginLeft15]}>
+                  {weatherData.sys.country} {' '}
+                  <CountryFlag isoCode={weatherData.sys.country} size={20}/>
+                </Text>
+            </View>
+            <View style={[styles.rowContainer, styles.marginTop20]}>
+                <Text style={[styles.text, styles.bold]}>Timezone: </Text>
+                <Text style={[styles.text, styles.marginLeft15]}>{convertTimezone(weatherData.timezone)}</Text>
             </View>
         </View>
     )
