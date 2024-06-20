@@ -15,7 +15,7 @@ const WeatherInfo = ({ weatherData }) => {
     const formattedUTC = `UTC${sign}${Math.abs(hours).toString().padStart(2, '0')}:${Math.abs(minutes).toString().padStart(2, '0')}`
   
     return formattedUTC
-  };
+  }
   
     return (
         <View style={styles.marginTop20}>
