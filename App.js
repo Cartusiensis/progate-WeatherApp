@@ -30,7 +30,6 @@ const App = () => {
               tabBarIcon: ({ color }) => (
                 <Feather name="search" size={28} color={color} />
               ),
-              headerShown: false,
             }}
           />
         </Tab.Navigator>
