@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { View, StyleSheet, ActivityIndicator, Text } from "react-native";
 import WeatherSearch from "../components/weatherSearch";
 import WeatherInfo from "../components/weatherInfo";
 import { BASE_URL, API_KEY } from "../constant";
+import { useNavigation } from "@react-navigation/native";
+import { WeatherDataContext } from "../weatherDataContext";
 
 const Home = () => {
-  const [weatherData, setWeatherData] = useState();
+  // const [weatherData, setWeatherData] = useState();
+  const { weatherData, setWeatherData } = useContext(WeatherDataContext);
   const [status, setStatus] = useState("");
+  const navigation = useNavigation();
 
   const renderComponent = () => {
     switch (status) {
